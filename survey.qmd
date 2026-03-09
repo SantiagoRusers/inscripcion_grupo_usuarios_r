@@ -36,11 +36,11 @@ library(surveydown)
 
 ::: {.sd_page id=welcome}
 
-# Inscripción a curso gratuito: Introducción al análisis de datos con R
+# Inscripción a curso gratuito: Introducción al análisis de datos con R, segunda versión
 
-**Curso online introductorio de programación dirigido a estudiantes o profesionales de ciencias sociales y humanidades, sin experiencia previa**
+**Curso online introductorio de programación dirigido a estudiantes o profesionales de las ciencias sociales**
 
-Más información sobre el curso [en este enlace.](https://bastianolea.rbind.io/blog/curso_gratis_r_intro_1/)
+Más información sobre el curso [en este enlace.](https://bastianolea.rbind.io/blog/curso_gratis_r_intro_2/)
 
 Rellena los datos para inscribirte al curso. 
 
