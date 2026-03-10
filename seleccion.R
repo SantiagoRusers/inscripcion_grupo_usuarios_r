@@ -21,7 +21,7 @@ resultados <- data |>
   # excluir pruebas
   filter(nombre != "Bastián Olea") |> 
   # seleccionar columnas
-  select(-starts_with("time"), time_end, -session_id, -nivel) |> 
+  select(-starts_with("time"), time_end, -session_id) |> 
   # convertir fechas
   mutate(time_end = lubridate::as_datetime(time_end)) |> 
   arrange(time_end) |> 
@@ -29,9 +29,13 @@ resultados <- data |>
   mutate(nombre = str_squish(nombre)) |> 
   distinct(nombre, .keep_all = TRUE) |> 
   # filtrar fecha de cierre
-  filter(time_end <= lubridate::ymd_hms("2026-01-14 20:59:59")) |> 
+  # filter(time_end <= lubridate::ymd_hms("2026-01-14 20:59:59")) |> 
   # limpiar respuestas
-  mutate(across(where(is.character), ~case_match(.x, "sí" ~ "sí", .default = .x)))
+  mutate(across(where(is.character),
+                ~case_when(str_detect(.x, "^s$") ~ "sí",
+                           .default = .x)))
+resultados
+
 
 # revisar datos ----
 resultados |> glimpse()
@@ -45,25 +49,31 @@ resultados |> distinct(areas) |> print(n=Inf)
 # puntajes ----
 # crear puntajes de selección
 resultados_p <- resultados |> 
-  mutate(puntaje = 2) |> 
+  mutate(puntaje = 1) |> 
   # sumar puntos a grupos de interés
   mutate(puntaje = if_else(trans == "sí", puntaje + 3, puntaje),
-         puntaje = if_else(lgbt == "sí" | is.na(lgbt), puntaje + 2, puntaje),
-         puntaje = if_else(genero %in% c("femenino", "no_binario", "queer_ag_nero_otro"), puntaje + 2, puntaje),
-         puntaje = if_else(pais == "chile", puntaje + 1, puntaje),
-         puntaje = if_else(disca != "no", puntaje + 1, puntaje)) |> 
+         puntaje = if_else(genero == "femenino", puntaje + 3, puntaje),
+         puntaje = if_else(lgbt == "sí", puntaje + 2, puntaje),
+         puntaje = if_else(genero %in% c("no_binario", "queer_ag_nero_otro"), puntaje + 2, puntaje),
+         puntaje = if_else(pais == "chile", puntaje + 2, puntaje),
+         puntaje = if_else(disca == "s_con_credencial_o_pensi_n_de_invalidez", puntaje + 2, puntaje),
+         puntaje = if_else(disca == "s_sin_credencial_o_pensi_n_de_invalidez", puntaje + 1, puntaje)) |> 
   # penalizar grupos
   mutate(puntaje = if_else(nivel_programacion == "sí", puntaje - 1, puntaje),
          puntaje = if_else(nivel_r %in% c("intermedio", "avanzado"), puntaje - 1, puntaje)) |> 
+  mutate(puntaje = if_else(puntaje <= 0, 1, puntaje)) |>
   # criterios excluyentes   
-  filter(!str_detect(areas, "otra_que_no_es_de_ciencias_sociales_o_humanidades")) |> 
+  filter(!str_detect(areas, "otra_que_no_es_de_ciencias_sociales_o_humanidades")) |>
   # crear ranking de postulantes
   arrange(desc(puntaje)) |> 
-  mutate(id = row_number())
+  mutate(id = row_number()) |> 
+  relocate(puntaje, .after = nombre)
 
 # revisar
 resultados_p |> 
-  select(nombre, pais, genero, disca, trans, lgbt, puntaje)
+  # filter(pais == "chile") |> 
+  select(nombre, pais, genero, disca, trans, lgbt, puntaje) |> 
+  print(n=Inf)
 
 resultados_p |> select(nombre, puntaje, id) |> head()
 resultados_p |> select(nombre, puntaje, id) |> tail()
