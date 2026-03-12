@@ -1,18 +1,27 @@
 
 /*-- scss:defaults --*/
-$primary: #9069C0;
+$primary: #6A3274;
 
 /* color de título de la encuesta */
 h1 {
-  color: #8656AA !important;
+  color: #6A3274 !important;
+}
+
+h2, h3 {
+  color: #E3467C !important;
 }
 
 /* cambiar color de fondo de la encuesta */
 body {
-  background-color: #F6F0FA !important;
+  background-color: #FDF4F8 !important;
+}
+
+/* cambiar color de fondo de la encuesta */
+body {
+   color: #593957 !important;
 }
 
 /* cambiar color de la barra superior de avance */
 #progressbar {
-  background-color: #EADBEC !important;
+  background-color: #FDEDF4 !important;
 }

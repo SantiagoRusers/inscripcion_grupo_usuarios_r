@@ -1,7 +1,14 @@
+library(surveydown)
 library(dplyr)
+library(stringr)
 
-cupos <- readr::read_csv("seleccionados_anonimos.csv")
+# conexión a la base de datos de la encuesta
+db <- sd_db_connect()
 
-cupos |> count(genero)
-cupos |> count(trans)
-cupos |> count(pais)
+# obtener datos desde la base y ordenar
+data <- sd_get_data(db) |> 
+  tibble() |> 
+  arrange(desc(time_end))
+
+# revisar datos
+glimpse(data)

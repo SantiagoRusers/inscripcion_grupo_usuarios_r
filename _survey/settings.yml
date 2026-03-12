@@ -4,7 +4,7 @@
 theme-settings:
   theme: custom.scss
   barposition: top
-  barcolor: '#8655AA'
+  barcolor: '#6A3274'
   footer-left: ''
   footer-center: ''
   footer-right: ''
@@ -18,7 +18,7 @@ survey-settings:
   start-page: welcome
   system-language: es
   highlight-unanswered: yes
-  highlight-color: purple
+  highlight-color: orange
   capture-metadata: no
   required-questions:
   - nombre
@@ -27,12 +27,10 @@ survey-settings:
   - lgbt
   - trans
   - pais
-  - disca
   - educacion
-  - areas
-  - nivel_programacion
   - nivel_r
   - correo
+  - sesiones
 
 system-messages:
   cancel: Cancelar

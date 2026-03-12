@@ -1,0 +1,12 @@
+name: inscripcion_grupo_usuarios_r
+title: inscripcion_grupo_usuarios_r
+username: bastianoleah
+account: bastianoleah
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16888177
+bundleId: 11701232
+url: https://bastianoleah.shinyapps.io/inscripcion_grupo_usuarios_r/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

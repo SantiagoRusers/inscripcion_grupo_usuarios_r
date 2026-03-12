@@ -8,8 +8,9 @@ warning: false
 # Theme Settings
 theme: custom.scss
 barposition: top
-barcolor: "#8655AA"
-linkcolor: "#8655AA"
+barcolor: "#6A3274"
+linkcolor: "#E3467C"
+highlight-color: orange
 
 # Survey Settings
 use-cookies: false
@@ -17,7 +18,6 @@ auto-scroll: true
 rate-survey: false
 system-language: es
 highlight-unanswered: true
-highlight-color: purple
 capture-metadata: false
 all-questions-required: true
 
@@ -36,17 +36,19 @@ library(surveydown)
 
 ::: {.sd_page id=welcome}
 
-# Inscripción a curso gratuito: Introducción al análisis de datos con R, segunda versión
+# Inscripción
 
-**Curso online introductorio de programación dirigido a estudiantes o profesionales de las ciencias sociales**
+## Participa del grupo de usuari@s de R de Santiago de Chile 
 
-Más información sobre el curso [en este enlace.](https://bastianolea.rbind.io/blog/curso_gratis_r_intro_2/)
+Podrás decidir si participar de la **siguiente** reunión, o de **todas** las siguientes reuniones de regularidad **mensual**.
 
-Rellena los datos para inscribirte al curso. 
+Las reuniones son abiertas a **personas que usen R de forma regular**, idealmente de **Santiago de Chile**, pero pueden participar personas de cualquier región del país!
 
-El curso tiene **cupos limitados**, y se aplicarán criterios de inclusión para la participación de grupos minoritarios (mujeres, disidencias de sexo y género, personas con discapacidad). Por lo tanto, **se te confirmará por correo si es que cuentas con un cupo.**
+El objetivo es **crear comunidad**, conocer lo que estamos haciendo, y compartir aprendizajes! 
 
-Al inscribirte al curso aceptas el [código de conducta](https://bastianolea.rbind.io/code-of-conduct/).
+[Para más información, revisa nuestro sitio web.](https://santiagorusers.github.io)
+
+Al inscribirte aceptas el [código de conducta](https://ropensci.org/es/código-de-conducta/). No se tolerará la discriminación ni el acoso.
 
 ```{r}
 sd_nav(page_next = 'page_1', label_next = "Inscribirse", show_prev = FALSE)
@@ -58,6 +60,8 @@ sd_nav(page_next = 'page_1', label_next = "Inscribirse", show_prev = FALSE)
 
 ### Preguntas de caracterización
 
+Empezaremos por preguntas para conocer a las personas participantes.
+
 ```{r}
 sd_question(
   type  = "text",
@@ -67,7 +71,6 @@ sd_question(
 )
 ```
 
-
 ```{r}
 sd_question(
   type  = "numeric",
@@ -76,7 +79,6 @@ sd_question(
   label = "Edad"
 )
 ```
-
 
 ```{r}
 sd_question(
@@ -97,8 +99,6 @@ sd_question(
 )
 ```
 
-
-
 ```{r}
 sd_question(
   type  = 'mc',
@@ -108,54 +108,35 @@ sd_question(
 )
 ```
 
-
 ```{r}
 sd_question(
   type  = 'select',
   id    = 'pais',
-  label = "¿En qué país vives?",
+  label = "¿En qué región de Chile vives?",
   direction = "vertical", 
   placeholder = "País",
-  selected = "Chile", 
-  option = c(
-    "Argentina",
-    "Bolivia",
-    "Brasil",
-    "Chile",
-    "Colombia",
-    "Costa Rica",
-    "Cuba",
-    "Ecuador",
-    "El Salvador",
-    "Guatemala",
-    "Honduras",
-    "México",
-    "Nicaragua",
-    "Panamá",
-    "Paraguay",
-    "Perú",
-    "Puerto Rico",
-    "República Dominicana",
-    "Uruguay",
-    "Venezuela",
-    "España",
-    "Otro"
+  selected = "Metropolitana", 
+  option = 
+    c("Arica y Parinacota",
+      "Tarapacá",
+      "Antofagasta",
+      "Atacama",
+      "Coquimbo",
+      "Valparaíso",
+      "Metropolitana",
+      "O'Higgins",
+      "Maule",
+      "Ñuble",
+      "Biobío",
+      "La Araucanía",
+      "Los Ríos",
+      "Los Lagos",
+      "Aysén",
+      "Magallanes y Antártica",
+      "Fuera de Chile"
     )
 )
 ```
-
-
-```{r}
-sd_question(
-  type  = 'mc',
-  id    = 'disca',
-  label = "¿Te encuentras en situación de discapacidad?",
-  option = c("Sí, con credencial o pensión de invalidez",
-             "Sí, sin credencial o pensión de invalidez",
-             "No")
-)
-```
-
 
 
 ```{r}
@@ -186,52 +167,11 @@ sd_question(
 
 ```{r}
 sd_question(
-  type  = 'mc_multiple_buttons',
-  id    = 'areas',
-  label = "¿A qué carrera o disciplina perteneces?",
-  option = c(
-    "Sociología",
-    "Antropología",
-    "Ciencia Política",
-    "Geografía",
-    "Historia",
-    "Derecho",
-    "Economía",
-    "Literatura",
-    "Filosofía",
-    "Psicología",
-    "Trabajo Social",
-    "Educación",
-    "Comunicación",
-    "Artes",
-    "Otra de ciencias sociales",
-    "Otra de humanidades",
-    "Otra que no es de ciencias sociales o humanidades"
-  )
-)
-```
-
-```{r}
-sd_question(
-  type  = 'mc_buttons',
-  id    = 'nivel_programacion',
-  label = "¿Manejas algún lenguaje de programación?",
-  option = c(
-    "Sí",
-    "No"
-  )
-)
-```
-
-
-```{r}
-sd_question(
   type  = 'mc_buttons',
   id    = 'nivel_r',
   label = "¿Cuál es tu nivel de conocimientos en R?",
   option = c(
-    "Ninguno",
-    "Lo vi en la universidad pero no entendí nada",
+    "Nulo",
     "Principiante",
     "Intermedio",
     "Avanzado",
@@ -239,6 +179,7 @@ sd_question(
   )
 )
 ```
+
 
 ```{r}
 sd_nav(label_next = "Siguiente", show_prev = TRUE)
@@ -250,7 +191,7 @@ sd_nav(label_next = "Siguiente", show_prev = TRUE)
 
 ### Contacto
 
-Deja un correo electrónico para comunicarte si quedaste en el curso. No se usará este correo para otros fines.
+Deja un correo electrónico para enviarte el enlace de conexión:
 
 ```{r}
 sd_question(
@@ -261,7 +202,19 @@ sd_question(
 )
 ```
 
-Luego de las inscripciones y asignación de cupos, se confirmará a este correo si cuentas con un cupo para participar.
+Tu correo no será usado para fines distintos del que indiques:
+
+```{r}
+sd_question(
+  type  = 'mc_buttons',
+  id    = 'sesiones',
+  label = "Quieres que te escribamos **sólo para la siguiente sesión**, o para **todas las sesiones futuras**?",
+  option = c(
+    "Sólo la siguiente sesión",
+    "Siguiente sesión y sesiones futuras"
+  )
+)
+```
 
 ```{r}
 sd_nav(label_next = "Terminar", show_prev = TRUE)
@@ -273,7 +226,7 @@ sd_nav(label_next = "Terminar", show_prev = TRUE)
 
 ## Gracias
 
-¡Muchas gracias por tu interés! Cualquier cosa puedes [contactarme](https://bastianolea.rbind.io/contacto/).
+¡Muchas gracias! Visita nuestro [sitio web](https://santiagorusers.github.io) para más información y eventos. **Nos vemos!**
 
 
 ```{r}
@@ -283,6 +236,6 @@ sd_close()
 <br>
 <br>
 
-Esta encuesta fue hecha en R con [`{surveydown}`](https://bastianolea.rbind.io/blog/surveydown_encuestas/)
+Esta encuesta fue hecha en R con [`{surveydown}`](https://surveydown.org)
 
 :::

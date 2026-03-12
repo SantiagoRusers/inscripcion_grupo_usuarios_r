@@ -30,37 +30,25 @@ trans:
     'No': 'no'
 pais:
   type: select
-  label: ¿En qué país vives?
+  label: ¿En qué región de Chile vives?
   options:
-    Argentina: argentina
-    Bolivia: bolivia
-    Brasil: brasil
-    Chile: chile
-    Colombia: colombia
-    Costa Rica: costa_rica
-    Cuba: cuba
-    Ecuador: ecuador
-    El Salvador: el_salvador
-    Guatemala: guatemala
-    Honduras: honduras
-    México: m_xico
-    Nicaragua: nicaragua
-    Panamá: panam
-    Paraguay: paraguay
-    Perú: per
-    Puerto Rico: puerto_rico
-    República Dominicana: rep_blica_dominicana
-    Uruguay: uruguay
-    Venezuela: venezuela
-    España: espa_a
-    Otro: otro
-disca:
-  type: mc
-  label: ¿Te encuentras en situación de discapacidad?
-  options:
-    Sí, con credencial o pensión de invalidez: s_con_credencial_o_pensi_n_de_invalidez
-    Sí, sin credencial o pensión de invalidez: s_sin_credencial_o_pensi_n_de_invalidez
-    'No': 'no'
+    Arica y Parinacota: arica_y_parinacota
+    Tarapacá: tarapac
+    Antofagasta: antofagasta
+    Atacama: atacama
+    Coquimbo: coquimbo
+    Valparaíso: valpara_so
+    Metropolitana: metropolitana
+    O'Higgins: o_higgins
+    Maule: maule
+    Ñuble: uble
+    Biobío: biob_o
+    La Araucanía: la_araucan_a
+    Los Ríos: los_r_os
+    Los Lagos: los_lagos
+    Aysén: ays_n
+    Magallanes y Antártica: magallanes_y_ant_rtica
+    Fuera de Chile: fuera_de_chile
 educacion:
   type: mc_buttons
   label: ¿Cuál es tu nivel educacional?
@@ -71,39 +59,11 @@ educacion:
     Magíster: mag_ster
     Estudiante de doctorado: estudiante_de_doctorado
     Doctorado: doctorado
-areas:
-  type: mc_multiple_buttons
-  label: ¿A qué carrera o disciplina perteneces?
-  options:
-    Sociología: sociolog_a
-    Antropología: antropolog_a
-    Ciencia Política: ciencia_pol_tica
-    Geografía: geograf_a
-    Historia: historia
-    Derecho: derecho
-    Economía: econom_a
-    Literatura: literatura
-    Filosofía: filosof_a
-    Psicología: psicolog_a
-    Trabajo Social: trabajo_social
-    Educación: educaci_n
-    Comunicación: comunicaci_n
-    Artes: artes
-    Otra de ciencias sociales: otra_de_ciencias_sociales
-    Otra de humanidades: otra_de_humanidades
-    Otra que no es de ciencias sociales o humanidades: otra_que_no_es_de_ciencias_sociales_o_humanidades
-nivel_programacion:
-  type: mc_buttons
-  label: ¿Manejas algún lenguaje de programación?
-  options:
-    Sí: s
-    'No': 'no'
 nivel_r:
   type: mc_buttons
   label: ¿Cuál es tu nivel de conocimientos en R?
   options:
-    Ninguno: ninguno
-    Lo vi en la universidad pero no entendí nada: lo_vi_en_la_universidad_pero_no_entend_nada
+    Nulo: nulo
     Principiante: principiante
     Intermedio: intermedio
     Avanzado: avanzado
@@ -111,4 +71,11 @@ nivel_r:
 correo:
   type: text
   label: Correo electrónico
+sesiones:
+  type: mc_buttons
+  label: Quieres que te escribamos sólo para la siguiente sesión, o para todas las
+    sesiones futuras?
+  options:
+    Sólo la siguiente sesión: s_lo_la_siguiente_sesi_n
+    Siguiente sesión y sesiones futuras: siguiente_sesi_n_y_sesiones_futuras
 
