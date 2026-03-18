@@ -2,6 +2,8 @@ library(surveydown)
 library(dplyr)
 library(stringr)
 
+# surveydown::sd_db_config()
+
 # conexión a la base de datos de la encuesta
 db <- sd_db_connect()
 
