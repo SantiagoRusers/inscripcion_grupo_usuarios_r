@@ -14,3 +14,11 @@ data <- sd_get_data(db) |>
 
 # revisar datos
 glimpse(data)
+
+data |> count(sesiones)
+
+data |> 
+  filter(time_start > "2026-03-18" | sesiones == "siguiente_sesi_n_y_sesiones_futuras") |> 
+  filter(!is.na(correo)) |> 
+  pull(correo) |> 
+  cat(sep = "\n")
