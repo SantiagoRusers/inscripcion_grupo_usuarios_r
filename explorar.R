@@ -17,8 +17,17 @@ glimpse(data)
 
 data |> count(sesiones)
 
+# personas inscritas y que pidieron notificación
 data |> 
   filter(time_start > "2026-03-18" | sesiones == "siguiente_sesi_n_y_sesiones_futuras") |> 
   filter(!is.na(correo)) |> 
+  pull(correo) |> 
+  cat(sep = "\n")
+
+# personas inscritas desde último correo
+data |> 
+  filter(time_start >= "2026-04-24") |> 
+  filter(!is.na(correo)) |> 
+  # select(time_start, correo)
   pull(correo) |> 
   cat(sep = "\n")
