@@ -31,3 +31,20 @@ data |>
   # select(time_start, correo)
   pull(correo) |> 
   cat(sep = "\n")
+
+
+# personas inscritas desde último correo
+data |> 
+  filter(time_start > "2026-04-26") |> 
+  filter(!is.na(correo)) |> 
+  # select(time_start, correo)
+  pull(correo) |> 
+  cat(sep = "\n")
+
+library(lubridate)
+
+data |> 
+  filter(time_start > "2026-04-26") |> 
+  filter(!is.na(correo)) |> 
+  mutate(demora = as_datetime(time_p_end) - as_datetime(time_start)) |> 
+  select(correo, demora)
